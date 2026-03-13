@@ -31,13 +31,13 @@
         ]
       },
       "inactivity_handling": {
-        "idle_time": 15,
-        "message": "I haven't heard from you in a moment. Feel free to call us back anytime. Goodbye!"
+        "idle_time": 20,
+        "message": "Are you still there?"
       }
     },
     "session_timeout": {
       "max_duration": 600,
-      "max_idle": 15,
+      "max_idle": 40,
       "message": "I haven't heard from you in a moment. Feel free to call us back anytime. Goodbye!"
     },
     "call_settings": {
@@ -46,14 +46,14 @@
     "tools": [
       {
         "name": "present_content",
-        "description": "Defines what content to display on the frontend for ShelterPoint claim status. Supported card types:\n- claim_list -> data: {claims: [{claim_id, claim_type}]}\n- claim_status -> data: {claim_id, claim_type, status, last_updated, action_required, action_details}\n- benefit_info -> data: {claim_id, claim_type, weekly_benefit, coverage, max_duration, payment}\n- escalation -> data: {}\nAll data must be passed as a JSON string. Empty fields are acceptable.",
+        "description": "Renders UI cards on the frontend during the conversation. Supported card types:\n- identity_form -> data: {name, dob, ssn_last4, claim_id} \u2014 fires during STEPS 1 & 2 as fields are collected; use null for fields not yet collected\n- claim_list -> data: {claims: [{claim_id, claim_type}]} \u2014 fires after identity is verified\n- claim_status -> data: {claim_id, claim_type, status, last_updated, action_required, action_details} \u2014 fires after claim status is read\n- benefit_info -> data: {claim_id, claim_type, weekly_benefit, coverage, max_duration, payment} \u2014 fires after benefit info is read\n- escalation -> data: {} \u2014 fires when escalating to a specialist\n- thank_you -> data: {} \u2014 fires at the end of every call before goodbye\nAll data must be passed as a JSON string. Use null for unpopulated fields.",
         "webhook": " ",
         "execute_after_message": true,
         "params": [
           {
             "name": "type",
             "type": "string",
-            "description": "Card type: claim_list, claim_status, benefit_info, escalation",
+            "description": "Card type: identity_form, claim_list, claim_status, benefit_info, escalation, thank_you",
             "required": true
           },
           {
