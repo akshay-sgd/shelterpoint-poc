@@ -1,4 +1,4 @@
-1. Don't let the agent not verify DOB. Whatever DOB user is giving agent should be fine with it and should not ask the user to correct it.
+1. Don't let the agent not verify DOB. Whatever DOB user is giving agent should be fine with it and should not ask the user to correct it. 
 2. Thank you card
 3. Form Card type. 
     - Form fields: Name, Last 4 digits of SSN, DOB and Claim ID

@@ -37,7 +37,7 @@
     },
     "session_timeout": {
       "max_duration": 600,
-      "max_idle": 40,
+      "max_idle": 30,
       "message": "I haven't heard from you in a moment. Feel free to call us back anytime. Goodbye!"
     },
     "call_settings": {
@@ -46,14 +46,14 @@
     "tools": [
       {
         "name": "present_content",
-        "description": "Renders UI cards on the frontend during the conversation. Supported card types:\n- identity_form -> data: {name, dob, ssn_last4, claim_id} \u2014 fires during STEPS 1 & 2 as fields are collected; use null for fields not yet collected\n- claim_list -> data: {claims: [{claim_id, claim_type}]} \u2014 fires after identity is verified\n- claim_status -> data: {claim_id, claim_type, status, last_updated, action_required, action_details} \u2014 fires after claim status is read\n- benefit_info -> data: {claim_id, claim_type, weekly_benefit, coverage, max_duration, payment} \u2014 fires after benefit info is read\n- escalation -> data: {} \u2014 fires when escalating to a specialist\n- thank_you -> data: {} \u2014 fires at the end of every call before goodbye\nAll data must be passed as a JSON string. Use null for unpopulated fields.",
+        "description": "Renders UI cards on the frontend during the conversation. Supported card types:\n- identity_form -> data: {name, dob, ssn_last4, claim_id} \u2014 fires during STEPS 1 & 2 as fields are collected; use null for fields not yet collected\n- claim_list -> data: {claims: [{claim_id, claim_type}]} \u2014 fires after identity is verified\n- claim_status -> data: {claim_id, claim_type, status, last_updated, action_required, action_details} \u2014 fires after claim status is read\n- benefit_info -> data: {claim_id, claim_type, weekly_benefit, coverage, max_duration, payment} \u2014 fires after benefit info is read\n- escalation -> data: {} \u2014 fires when escalating to a specialist\n- thank_you -> data: {} \u2014 fires at the end of every call before goodbye\n- knowledge_card -> data: {title, items: []} \u2014 fires when answering a ShelterPoint general knowledge question; title and items vary per question\nAll data must be passed as a JSON string. Use null for unpopulated fields.",
         "webhook": " ",
         "execute_after_message": true,
         "params": [
           {
             "name": "type",
             "type": "string",
-            "description": "Card type: identity_form, claim_list, claim_status, benefit_info, escalation, thank_you",
+            "description": "Card type: identity_form, claim_list, claim_status, benefit_info, escalation, thank_you, knowledge_card",
             "required": true
           },
           {
