@@ -1,0 +1,69 @@
+{
+  "name": "ShelterPoint Claims Assistant",
+  "config": {
+    "prompt": "__PROMPT__",
+    "first_message": "Hello! Welcome to ShelterPoint's AI support assistant. I'm here to help you check the status of your claim. May I please have your full name and date of birth?",
+    "voice": {
+      "provider": "elevenlabs",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model": "eleven_turbo_v2_5",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75
+      }
+    },
+    "language": "en",
+    "llm": {
+      "model": "gpt-4o",
+      "temperature": 0.2
+    },
+    "flow": {
+      "interruption": {
+        "allowed": true,
+        "keep_interruption_message": false,
+        "first_messsage": false
+      },
+      "agent_terminate_call": {
+        "enabled": true,
+        "messages": [
+          "Thank you for choosing ShelterPoint. Have a great day!",
+          "Thank you for calling ShelterPoint. Goodbye!"
+        ]
+      },
+      "inactivity_handling": {
+        "idle_time": 15,
+        "message": "I haven't heard from you in a moment. Feel free to call us back anytime. Goodbye!"
+      }
+    },
+    "session_timeout": {
+      "max_duration": 600,
+      "max_idle": 15,
+      "message": "I haven't heard from you in a moment. Feel free to call us back anytime. Goodbye!"
+    },
+    "call_settings": {
+      "enable_recording": true
+    },
+    "tools": [
+      {
+        "name": "present_content",
+        "description": "Defines what content to display on the frontend for ShelterPoint claim status. Supported card types:\n- claim_list -> data: {claims: [{claim_id, claim_type}]}\n- claim_status -> data: {claim_id, claim_type, status, last_updated, action_required, action_details}\n- benefit_info -> data: {claim_id, claim_type, weekly_benefit, coverage, max_duration, payment}\n- escalation -> data: {}\nAll data must be passed as a JSON string. Empty fields are acceptable.",
+        "webhook": " ",
+        "execute_after_message": true,
+        "params": [
+          {
+            "name": "type",
+            "type": "string",
+            "description": "Card type: claim_list, claim_status, benefit_info, escalation",
+            "required": true
+          },
+          {
+            "name": "data",
+            "type": "string",
+            "description": "Card-specific payload as a JSON string matching the card type schema.",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}
