@@ -27,7 +27,8 @@
         "enabled": true,
         "messages": [
           "Thank you for choosing ShelterPoint. Have a great day!",
-          "Thank you for calling ShelterPoint. Goodbye!"
+          "Thank you for calling ShelterPoint. Goodbye!",
+          "Thank you for your patience. A specialist will reach out to you shortly. Goodbye!"
         ]
       },
       "inactivity_handling": {
