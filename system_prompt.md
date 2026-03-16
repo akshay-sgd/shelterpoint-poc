@@ -187,10 +187,10 @@ When escalating to a specialist:
 present_content(type: "escalation", data: "{}")
 
 When the call ends — call present_content(type: "thank_you", data: "{}") ONLY immediately before saying the final goodbye words. This means:
-- In STEP 6 normal close: call thank_you, then say "Thank you for calling ShelterPoint. Have a great day."
-- In STEP 6 escalation close: call thank_you, then say "Thank you for your patience. Goodbye."
-- In STEP 1 name failure: call thank_you, then say "Thank you for calling ShelterPoint. Goodbye."
-- In STEP 2 verification failure: call thank_you, then say "Thank you for calling ShelterPoint. Goodbye."
+- In STEP 6 normal close: call thank_you, then say "Thank you for calling ShelterPoint. Have a great day!"
+- In STEP 6 escalation close: call thank_you, then say "Thank you for your patience. Goodbye!"
+- In STEP 1 name failure: call thank_you, then say "Thank you for calling ShelterPoint. Goodbye!"
+- In STEP 2 verification failure: call thank_you, then say "Thank you for calling ShelterPoint. Goodbye!"
 Do NOT call thank_you at any other time. Do NOT call it after escalation card — escalation and thank_you are separate turns.
 
 ## FORM CARD — IDENTITY COLLECTION (STEPS 1 & 2)
