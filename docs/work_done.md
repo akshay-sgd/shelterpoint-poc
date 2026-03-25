@@ -5,3 +5,10 @@
     - They are supposed to populated in the UI as user speak these fields
     - Intially user may tell some of these fields. So, partially only those fields supposed to be populated in the form card.
     - So, I think we have to trigger the form card type multiple times for this.
+    
+---
+
+1. Don't use `claim_id` for verification
+    - Remove claim_id from identity form
+    - Don't ask for claim_id from caller
+2. Add step for OTP verification
